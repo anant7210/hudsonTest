@@ -1,0 +1,90 @@
+
+public class TestClass {
+	public static void main(String[] args) {
+		final Company c[]=new Company[10];
+		c[0]=new Company("Google");
+		c[1]=new Company("Facebook");
+		c[2]=new Company("Oracle");
+		c[3]=new Company("Samsung");
+		Thread t1=new Thread(){
+			public void run(){
+				int ch=1;
+				while (true) {
+                    try {
+                        Thread.sleep(50);
+                        c[0].talk(c[ch]);
+                        ch++;
+                        if(ch>3)
+                        	ch=1;
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();                    }
+                }
+
+			}
+		};	
+		Thread t2= new Thread(){
+			public void run(){
+				int ch=0;
+				while (true) {
+                    try {
+                    	if(ch==1)
+                    	{	
+                    		ch++;
+                    		continue;
+                    	}
+                        Thread.sleep(100);
+                        c[1].talk(c[ch]);
+                        ch++;                  	
+                        if(ch>3)
+                        	ch=0;
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();                    }
+                }
+
+			}
+		};
+		Thread t3=new Thread(){
+			public void run(){
+				int ch=0;
+				while (true) {
+                    try {
+                    	if(ch==2)
+                    	{
+                    		ch++;
+                    		continue;
+                    	}
+                        Thread.sleep(150);
+                        c[2].talk(c[ch]);
+                        ch++;                  	
+                        if(ch>3)
+                        	ch=0;
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();                    }
+                }
+
+			}
+		};
+		Thread t4=new Thread(){
+			public void run(){
+				int ch=0;
+				while (true) {
+                    try {
+                        Thread.sleep(200);
+                        c[3].talk(c[ch]);
+                        ch++;                  	
+                        if(ch>2)
+                        	ch=0;
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();                    }
+                }
+
+			}
+			
+		};
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+	}
+
+}
