@@ -9,7 +9,8 @@ public class TestClass {
 		Thread t1=new Thread(){
 			public void run(){
 				int ch=1;
-				while (true) {
+				int i=0;
+				while (i++<100) {
                     try {
                         Thread.sleep(50);
                         c[0].talk(c[ch]);
@@ -25,7 +26,8 @@ public class TestClass {
 		Thread t2= new Thread(){
 			public void run(){
 				int ch=0;
-				while (true) {
+				int i=0;
+				while (i++<100) {
                     try {
                     	if(ch==1)
                     	{	
@@ -46,7 +48,8 @@ public class TestClass {
 		Thread t3=new Thread(){
 			public void run(){
 				int ch=0;
-				while (true) {
+				int i=0;
+				while (i++<100) {
                     try {
                     	if(ch==2)
                     	{
@@ -67,7 +70,8 @@ public class TestClass {
 		Thread t4=new Thread(){
 			public void run(){
 				int ch=0;
-				while (true) {
+				int i=0;
+				while (i++<100) {
                     try {
                         Thread.sleep(200);
                         c[3].talk(c[ch]);
